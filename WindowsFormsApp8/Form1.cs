@@ -60,7 +60,7 @@ namespace WindowsFormsApp8
             dividedRightLabel.Text = divisor.ToString();
             quotient.Value = 0;
 
-            
+            timeLabel.BackColor = Color.Gray;
 
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
@@ -78,12 +78,8 @@ namespace WindowsFormsApp8
         {
             if (CheckTheAnswer())
             {
-                // If CheckTheAnswer() returns true, then the user 
-                // got the answer right. Stop the timer  
-                // and show a MessageBox.
                 timer1.Stop();
-                MessageBox.Show("You got all the answers right!",
-                                "Congratulations!");
+                MessageBox.Show("Quick maths!!");
                 startButton.Enabled = true;
             }
             else
@@ -92,16 +88,27 @@ namespace WindowsFormsApp8
 
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
+                
             }
             else
             {
 
                 timer1.Stop();
                 timeLabel.Text = "Time's up!";
-                MessageBox.Show("You didn't finish in time.", "Sorry!");
+                MessageBox.Show("That`s not quick math! Try Again!");
                 sum.Value = addend1 + addend2;
                 difference.Value = minuend - subtrahend;
                 startButton.Enabled = true;
+            }
+            if(timeLeft<=10 && timeLeft>=6 )
+            {
+                timeLabel.BackColor = Color.Yellow;
+            }
+            if(timeLeft<=5)
+            {
+                
+                    timeLabel.BackColor = Color.Red;
+           
             }
         }
         private bool CheckTheAnswer()
