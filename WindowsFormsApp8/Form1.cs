@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 
 namespace WindowsFormsApp8
 {
@@ -73,8 +74,11 @@ namespace WindowsFormsApp8
             if (CheckTheAnswer())
             {
                 timer1.Stop();
+                SoundPlayer splayer = new SoundPlayer(@"D:/Quick Maths.wav");
                 MessageBox.Show("Quick maths!!");
                 startButton.Enabled = true;
+            
+                    splayer.Play();
             }
             else
             if (timeLeft > 0)
